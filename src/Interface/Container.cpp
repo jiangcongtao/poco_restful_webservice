@@ -8,7 +8,7 @@ namespace Interface {
 
     Container::Container()
         : port(9000),
-          endpoint("localhost")
+          endpoint("0.0.0.0")
     { }
 
     Container::~Container()

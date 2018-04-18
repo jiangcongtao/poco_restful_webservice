@@ -58,14 +58,19 @@ option(ENABLE_TESTS
 option(ENABLE_STANDALONE_SERVICE
         "Set to OFF|ON (default: ON) to control build of API as standalone service" ON)
 
+
 if (ENABLE_STANDALONE_SERVICE)
     add_executable(${EXECUTABLE_BINARY_NAME} ${PROJECT_SOURCE_DIR}/main.cpp)
     target_link_libraries(${EXECUTABLE_BINARY_NAME} ${APPLICATION_BINARY_NAME})
 
     message(STATUS "Building API with standalone service support.")
+   
+    install (TARGETS ${APPLICATION_BINARY_NAME} DESTINATION lib)
 elseif ()
     message(STATUS "Building without standalone service support.")
 endif ()
+
+install (TARGETS ${EXECUTABLE_BINARY_NAME} DESTINATION bin)
 
 if (ENABLE_TESTS)
     add_subdirectory(test)
